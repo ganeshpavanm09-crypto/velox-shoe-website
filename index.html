@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELOX - Next-Gen Performance Footwear</title>
+    <meta name="description" content="Experience the precision engineering of VELOX footwear. Move faster, feel lighter with our interactive 3D motion showcase.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css?v=15">
+</head>
+<body>
+    <!-- Clean Premium Original Environment -->
+
+    <!-- Toast Notification System -->
+    <div id="toast-notification" class="toast-notification hidden">
+        <div class="toast-ping"></div>
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- Floating Navigation Header (styled as a glass pill nav) -->
+    <header id="main-navigation" class="header-nav-floating">
+        <div class="nav-container-floating">
+            <a href="#" id="brand-logo" class="logo">
+                <svg class="logo-leaf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.25 2 5a7 7 0 0 1-7 7h-2v3a3 3 0 0 0-3 3z"></path></svg>
+                VELOX
+            </a>
+            
+            <nav id="desktop-menu" class="nav-links-floating">
+                <a href="#home" id="nav-link-home" class="nav-item-floating active">Home</a>
+                <a href="#features" id="nav-link-men" class="nav-item-floating">Men</a>
+                <a href="#tech-specs" id="nav-link-women" class="nav-item-floating">Women</a>
+                <a href="#tech-specs" id="nav-link-new-arrivals" class="nav-item-floating">New Arrivals</a>
+                <a href="#tech-specs" id="nav-link-collections" class="nav-item-floating">Collections</a>
+                <a href="#quality" id="nav-link-about" class="nav-item-floating">About</a>
+            </nav>
+
+            <div id="nav-actions" class="nav-actions-floating">
+                <a href="#login" id="nav-login-btn" class="login-link-floating">Log in</a>
+                <button id="nav-shop-now-btn" class="btn-shop-now-floating">
+                    Shop Now
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Overlay Modal -->
+    <div id="search-overlay" class="modal-overlay hidden">
+        <button id="close-search" class="close-btn" aria-label="Close search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div class="search-content">
+            <h3 class="overlay-title">SEARCH VELOX VAULT</h3>
+            <div class="search-input-wrapper">
+                <input id="search-input" type="text" placeholder="Type running, durability, lightweight..." />
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <div class="search-tags">
+                <button class="search-tag-btn">VELOX-01</button>
+                <button class="search-tag-btn">Carbon Knit</button>
+                <button class="search-tag-btn">Trail Grip</button>
+                <button class="search-tag-btn">Chassis</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Shop Modal -->
+    <div id="quick-shop-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button id="close-quick-shop" class="close-btn-card" aria-label="Close shop">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <h3 class="modal-card-title">VELOX NEXT-GEN ONE</h3>
+            <p class="modal-card-subtitle">PRE-ORDER SPECIAL EDITION</p>
+            
+            <div class="modal-form-group">
+                <label class="form-label">SELECT US SIZE (MEN / WOMEN)</label>
+                <div id="size-selector-grid" class="size-grid">
+                    <button class="size-btn">US 8</button>
+                    <button class="size-btn">US 8.5</button>
+                    <button class="size-btn">US 9</button>
+                    <button class="size-btn active">US 9.5</button>
+                    <button class="size-btn">US 10</button>
+                    <button class="size-btn">US 10.5</button>
+                    <button class="size-btn">US 11</button>
+                    <button class="size-btn">US 12</button>
+                </div>
+            </div>
+
+            <div class="modal-price-row">
+                <span class="price-label">PRICE VALUE</span>
+                <span class="price-value">$249.00 USD</span>
+            </div>
+
+            <button id="confirm-preorder-button" class="btn-primary-green w-full">
+                ADD TO CART
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Premium Loading Overlay -->
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <h1 class="loader-brand">VELOX</h1>
+            <p class="loader-sub">Preparing Interactive 3D Model</p>
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar-green"></div>
+            </div>
+            <div id="progress-text" class="progress-text">0%</div>
+        </div>
+    </div>
+
+    <!-- MAIN SCROLL LAYOUT (Split Screen) -->
+    <div class="split-layout">
+        
+        <!-- Left Side: Scrolling Narrative Content -->
+        <div class="scroll-content">
+            
+            <!-- SECTION 1: HERO (styled exactly like Verdant reference photo) -->
+            <section id="home" class="story-section hero-story">
+                <div id="hero-badge" class="hero-badge-pill">
+                    <span class="badge-dot">•</span>
+                    <span class="badge-text-green">NEW</span>
+                    <span class="badge-text-main">Velox Speed Series</span>
+                    <span class="badge-arrow">></span>
+                </div>
+                
+                <div class="hero-titles">
+                    <h1 class="hero-title-main">Engineered for Speed.</h1>
+                    <h2 class="hero-title-serif-italic">Built to Win.</h2>
+                </div>
+
+                <p class="hero-desc">
+                    Premium football boots designed for explosive performance and unmatched control.
+                </p>
+
+                <div class="hero-ctas">
+                    <button id="cta-shop-collection" class="btn-primary-green">
+                        Shop now
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                    <button id="cta-explore-360" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-left"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></svg>
+                        EXPLORE IN 360°
+                    </button>
+                </div>
+
+                <!-- Checked lists under Hero CTAs -->
+                <div class="hero-checkmarks">
+                    <span class="checkmark-item"><span class="check">✓</span> Explosive Speed</span>
+                    <span class="checkmark-item"><span class="check">✓</span> Precision Control</span>
+                </div>
+            </section>
+
+            <!-- SECTION 2: SPECS GRID & INTERACTIVE INSPECTOR -->
+            <section id="features" class="story-section">
+                <h3 class="section-title">ENGINEERED SPECS</h3>
+                <p class="section-subtitle">High-fidelity footwear schematic overview</p>
+
+                <div id="hero-features-grid" class="features-grid">
+                    <!-- Feature Card 1 -->
+                    <div id="feature-card-ultra-light" class="feature-card" data-feature="ultra-light">
+                        <div class="card-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+                        </div>
+                        <div class="card-text">
+                            <h4>ULTRA-LIGHT CONSTRUCTION</h4>
+                            <p>Featherweight engineered chassis</p>
+                        </div>
+                    </div>
+                    <!-- Feature Card 2 -->
+                    <div id="feature-card-breathable-knit" class="feature-card" data-feature="breathable-knit">
+                        <div class="card-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
+                        </div>
+                        <div class="card-text">
+                            <h4>BREATHABLE KNIT TECH</h4>
+                            <p>VeloKnit™ adaptive upper</p>
+                        </div>
+                    </div>
+                    <!-- Feature Card 3 -->
+                    <div id="feature-card-premium-durability" class="feature-card" data-feature="premium-durability">
+                        <div class="card-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <div class="card-text">
+                            <h4>PREMIUM DURABILITY</h4>
+                            <p>Carbon-reinforced stability cage</p>
+                        </div>
+                    </div>
+                    <!-- Feature Card 4 -->
+                    <div id="feature-card-sustainable-materials" class="feature-card" data-feature="sustainable-materials">
+                        <div class="card-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.25 2 5a7 7 0 0 1-7 7h-2v3a3 3 0 0 0-3 3z"></path></svg>
+                        </div>
+                        <div class="card-text">
+                            <h4>SUSTAINABLE MATERIALS</h4>
+                            <p>Eco-conscious premium yarn</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Technical Specs Drawer -->
+                <div id="dynamic-tech-panel" class="tech-spec-panel">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="info-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <p id="dynamic-tech-text" class="panel-text">
+                        Hover or click any feature card to inspect next-generation footwear specifications.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: STORY SPEC 1 - ULTRA LIGHT -->
+            <section id="tech-specs" class="story-section spec-detail-section" data-feature-sync="ultra-light">
+                <div class="spec-label">TECH SHOWCASE 01</div>
+                <h3 class="section-title-large">FEATHERWEIGHT AERO</h3>
+                <p class="section-desc-detail">
+                    Weighing only 180 grams, the Velox features a dual-density AeroFoam™ midsole. Engineered specifically for dynamic response, it absorbs high shocks while releasing explosive energy return at toe-off without adding bulk.
+                </p>
+                <div class="spec-stats">
+                    <div class="spec-stat-item">
+                        <span class="stat-val">180g</span>
+                        <span class="stat-lbl">TOTAL CHASSIS WEIGHT</span>
+                    </div>
+                    <div class="spec-stat-item">
+                        <span class="stat-val">+35%</span>
+                        <span class="stat-lbl">ENERGY RETURN</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: STORY SPEC 2 - BREATHABLE KNIT -->
+            <section class="story-section spec-detail-section" data-feature-sync="breathable-knit">
+                <div class="spec-label">TECH SHOWCASE 02</div>
+                <h3 class="section-title-large">VELOKNIT™ ADAPTIVE UPPER</h3>
+                <p class="section-desc-detail">
+                    A single-layer, high-tensile engineered mesh maps perfectly to your foot shapes. Micro-ventilation zones optimize airflow by 45%, reducing hotspots and perspiration build-up during maximum output runs.
+                </p>
+                <div class="spec-stats">
+                    <div class="spec-stat-item">
+                        <span class="stat-val">+45%</span>
+                        <span class="stat-lbl">AIRFLOW EXPANSION</span>
+                    </div>
+                    <div class="spec-stat-item">
+                        <span class="stat-val">FitLock</span>
+                        <span class="stat-lbl">DYNAMIC SUPPORT</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: STORY SPEC 3 - PREMIUM DURABILITY -->
+            <section class="story-section spec-detail-section" data-feature-sync="premium-durability">
+                <div class="spec-label">TECH SHOWCASE 03</div>
+                <h3 class="section-title-large">STABILITY CAGE</h3>
+                <p class="section-desc-detail">
+                    An external heel DuraCage™ and carbon-reinforced TPU stabilizer prevent ankle roll and support heavy-duty heel landings. Combined with high-traction vulcanized rubber pods, it ensures superior slip resistance on track and trail.
+                </p>
+                <div class="spec-stats">
+                    <div class="spec-stat-item">
+                        <span class="stat-val">+60%</span>
+                        <span class="stat-lbl">STABILITY SCALE</span>
+                    </div>
+                    <div class="spec-stat-item">
+                        <span class="stat-val">TPU-12</span>
+                        <span class="stat-lbl">HEEL SHIELD LEVEL</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: STORY SPEC 4 - SUSTAINABLE -->
+            <section class="story-section spec-detail-section" data-feature-sync="sustainable-materials">
+                <div class="spec-label">TECH SHOWCASE 04</div>
+                <h3 class="section-title-large">ECO-CONSCIOUS YARN</h3>
+                <p class="section-desc-detail">
+                    Sustainability meets peak performance. Crafted using 85% recycled ocean-bound plastics and biodegradable bio-foams. The entire shoe design ensures lightweight resilience while drastically shrinking its ecological footprint.
+                </p>
+                <div class="spec-stats">
+                    <div class="spec-stat-item">
+                        <span class="stat-val">85%</span>
+                        <span class="stat-lbl">RECYCLED POLYESTERS</span>
+                    </div>
+                    <div class="spec-stat-item">
+                        <span class="stat-val">Zero</span>
+                        <span class="stat-lbl">PETROLEUM FOAMS USED</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: QUALITY & STATISTICS -->
+            <section id="quality" class="story-section ending-story">
+                <h3 class="section-title">VERIFIED QUALITY</h3>
+                <p class="section-desc-detail">
+                    Every element is wear-tested and refined in the lab. Experience footwear crafted to deliver unmatched comfort, style, and track-ready confidence.
+                </p>
+
+                <!-- Statistics Grid -->
+                <div id="stats-row" class="stats-grid">
+                    <div id="stat-customers" class="stat-box">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">HAPPY CUSTOMERS</span>
+                    </div>
+                    <div id="stat-rating" class="stat-box">
+                        <span class="stat-number flex-center">
+                            4.9
+                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </span>
+                        <span class="stat-label">CUSTOMER RATING</span>
+                    </div>
+                    <div id="stat-quality" class="stat-box">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">PREMIUM QUALITY</span>
+                    </div>
+                    <div id="stat-shipping" class="stat-box">
+                        <span class="stat-number">
+                            <svg class="shipping-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                        </span>
+                        <span class="stat-label">FREE SHIPPING</span>
+                    </div>
+                </div>
+
+                <!-- Sizing widget -->
+                <div id="size-availability-widget" class="size-widget">
+                    <div class="size-widget-txt">
+                        <span class="lbl-light">Selected Preview Size</span>
+                        <span id="selected-size-text" class="lbl-bold">US 9.5 (MEN)</span>
+                    </div>
+                    <div class="size-widget-buttons">
+                        <button class="widget-size-btn">8.5</button>
+                        <button class="widget-size-btn active">9.5</button>
+                        <button class="widget-size-btn">10.5</button>
+                        <button class="widget-size-btn">11.5</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Side: Fixed/Sticky Visual Column -->
+        <div class="sticky-visual">
+            <div id="viewer-controls" class="viewer-nav">
+                <button id="btn-mode-side" class="mode-toggle-btn active">SIDE</button>
+                <button id="btn-mode-iso" class="mode-toggle-btn">ISO</button>
+                <button id="btn-mode-top" class="mode-toggle-btn">TOP</button>
+            </div>
+            
+            <div id="tech-schematic-readout" class="schematic-data">
+                <div>SYSTEM: ONLINE</div>
+                <div>MESH_DENSITY: High-Fi</div>
+                <div>RENDER_MODE: Canvas_Render</div>
+                <div class="active-view-badge">VIEW: <span id="schematic-view-text">SIDE</span></div>
+            </div>
+
+            <!-- Scroll Canvas Viewport Container -->
+            <div class="canvas-viewport-container">
+                <div class="canvas-viewport">
+                    <canvas id="scroll-canvas"></canvas>
+                </div>
+
+                <!-- Floating Glassmorphic Overlay Stats & Tech Callout Cards (Syncs with scroll) -->
+                <div id="canvas-overlay-cards">
+                    <!-- General Stats (Visible in Hero Section) -->
+                    <div id="overlay-card-satisfaction" class="glass-overlay-card position-bottom-left show">
+                        <div class="card-number">98%</div>
+                        <div class="card-desc">Player Satisfaction</div>
+                    </div>
+                    <div id="overlay-card-sales" class="glass-overlay-card position-bottom-right show">
+                        <div class="card-number">250K+</div>
+                        <div class="card-desc">Pairs Sold</div>
+                    </div>
+
+                    <!-- Contextual Technical Callouts (Linked to Scroll Narrative sections) -->
+                    <div id="callout-card-midsole" class="glass-overlay-card position-tech-midsole">
+                        <div class="card-title-small">AeroFoam™ Midsole</div>
+                        <div class="card-number-sub">180g Chassis</div>
+                        <div class="card-desc-sub">Explosive return cushioning</div>
+                    </div>
+
+                    <div id="callout-card-mesh" class="glass-overlay-card position-tech-mesh">
+                        <div class="card-title-small">VeloKnit™ Upper</div>
+                        <div class="card-number-sub">+45% Airflow</div>
+                        <div class="card-desc-sub">Single-layer engineered mesh</div>
+                    </div>
+
+                    <div id="callout-card-stability" class="glass-overlay-card position-tech-stability">
+                        <div class="card-title-small">DuraCage™ Support</div>
+                        <div class="card-number-sub">+60% Stability</div>
+                        <div class="card-desc-sub">TPU external heel counter</div>
+                    </div>
+
+                    <div id="callout-card-eco" class="glass-overlay-card position-tech-eco">
+                        <div class="card-title-small">Sustainable Design</div>
+                        <div class="card-number-sub">85% Recycled</div>
+                        <div class="card-desc-sub">Ocean bound polyamides</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-helper-badge">
+                SCROLL TO EXPLORE 360° DETAILS
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Elegant Mouse Scroll Hints (Fades out as they scroll down) -->
+    <div id="scroll-hint" class="scroll-hint">
+        <div class="mouse-icon">
+            <div class="wheel"></div>
+        </div>
+        <div class="scroll-text">SCROLL TO EXPLORE</div>
+    </div>
+
+    <script src="index.js?v=15"></script>
+</body>
+</html>
